@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: #f1e8d6;
+  font-family: "Manrope", sans-serif;
+}
+
+.font-display {
+  font-family: "Fraunces", serif;
+}
+.font-body {
+  font-family: "Manrope", sans-serif;
+}
