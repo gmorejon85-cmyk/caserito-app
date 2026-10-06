@@ -24,11 +24,11 @@ import PerfilComercio from "./pages/comercio/PerfilComercio";
 
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/Dashboard";
-import PerfilAdmin from "./pages/admin/PerfilAdmin";
 import Comercios from "./pages/admin/Comercios";
 import Usuarios from "./pages/admin/Usuarios";
 import CrearUsuario from "./pages/admin/CrearUsuario";
 import PublicacionesAdmin from "./pages/admin/PublicacionesAdmin";
+import PerfilAdmin from "./pages/admin/PerfilAdmin";
 
 export default function App() {
   return (
@@ -57,11 +57,11 @@ export default function App() {
 
       <Route path="/admin" element={<ProtectedRoute roles={["admin"]}><AdminLayout /></ProtectedRoute>}>
         <Route index element={<AdminDashboard />} />
-        <Route path="perfil" element={<PerfilAdmin />} />
         <Route path="comercios" element={<Comercios />} />
         <Route path="usuarios" element={<Usuarios />} />
         <Route path="crear-usuario" element={<CrearUsuario />} />
         <Route path="publicaciones" element={<PublicacionesAdmin />} />
+        <Route path="perfil" element={<PerfilAdmin />} />
       </Route>
 
       <Route path="*" element={<Landing />} />
