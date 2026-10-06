@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
-import { BarChart3, Store, Users, FileText, UserPlus } from "lucide-react";
+import { BarChart3, Store, Users, FileText, UserPlus, User } from "lucide-react";
 import { C } from "../../theme";
 
 const nav = [
@@ -9,6 +9,7 @@ const nav = [
   { to: "/admin/usuarios", label: "Usuarios", icon: Users },
   { to: "/admin/crear-usuario", label: "Crear usuario", icon: UserPlus },
   { to: "/admin/publicaciones", label: "Publicaciones", icon: FileText },
+  { to: "/admin/perfil", label: "Mi perfil", icon: User },
 ];
 
 export default function AdminLayout() {
