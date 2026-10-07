@@ -3,12 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabaseClient";
 import { C, CATEGORIAS } from "../theme";
 import { Input, Select, PrimaryButton } from "../components/ui";
+import LocationPicker from "../components/LocationPicker";
 
 export default function RegistroComercio() {
   const navigate = useNavigate();
   const [form, setForm] = useState({
     nombre: "", celular: "", email: "", password: "",
     nombre_comercio: "", tipo_establecimiento: CATEGORIAS[0], direccion: "", ciudad: "La Paz",
+    latitud: null, longitud: null,
   });
   const [error, setError] = useState("");
   const [sending, setSending] = useState(false);
@@ -47,6 +49,8 @@ export default function RegistroComercio() {
         celular: form.celular,
         direccion: form.direccion,
         ciudad: form.ciudad,
+        latitud: form.latitud,
+        longitud: form.longitud,
       });
       setSending(false);
       if (bizError) {
@@ -90,6 +94,7 @@ export default function RegistroComercio() {
           <Select label="Tipo de comercio" options={CATEGORIAS} value={form.tipo_establecimiento} onChange={(e) => setForm({ ...form, tipo_establecimiento: e.target.value })} />
           <Input label="Ciudad" required value={form.ciudad} onChange={(e) => setForm({ ...form, ciudad: e.target.value })} />
           <div className="col-span-2"><Input label="Dirección" required value={form.direccion} onChange={(e) => setForm({ ...form, direccion: e.target.value })} /></div>
+          <div className="col-span-2"><LocationPicker lat={form.latitud} lng={form.longitud} onChange={(lat, lng) => setForm({ ...form, latitud: lat, longitud: lng })} /></div>
           <div className="col-span-2"><Input label="Correo electrónico" type="email" required value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} /></div>
           <div className="col-span-2"><Input label="Contraseña" type="password" minLength={6} required value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} /></div>
         </div>

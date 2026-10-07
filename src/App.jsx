@@ -9,6 +9,7 @@ import RegistroComercio from "./pages/RegistroComercio";
 
 import ClienteLayout from "./pages/cliente/ClienteLayout";
 import Explorar from "./pages/cliente/Explorar";
+import Mapa from "./pages/cliente/Mapa";
 import DetalleProducto from "./pages/cliente/DetalleProducto";
 import Favoritos from "./pages/cliente/Favoritos";
 import Pedidos from "./pages/cliente/Pedidos";
@@ -40,6 +41,7 @@ export default function App() {
 
       <Route path="/app" element={<ProtectedRoute roles={["cliente"]}><ClienteLayout /></ProtectedRoute>}>
         <Route index element={<Explorar />} />
+        <Route path="mapa" element={<Mapa />} />
         <Route path="producto/:id" element={<DetalleProducto />} />
         <Route path="favoritos" element={<Favoritos />} />
         <Route path="pedidos" element={<Pedidos />} />

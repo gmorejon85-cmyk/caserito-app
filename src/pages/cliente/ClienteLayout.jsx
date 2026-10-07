@@ -1,10 +1,11 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
-import { Search, Heart, ShoppingBag, User } from "lucide-react";
+import { Search, Heart, ShoppingBag, User, MapPin } from "lucide-react";
 import { C } from "../../theme";
 
 const tabs = [
   { to: "/app", label: "Explorar", icon: Search, end: true },
+  { to: "/app/mapa", label: "Mapa", icon: MapPin },
   { to: "/app/favoritos", label: "Favoritos", icon: Heart },
   { to: "/app/pedidos", label: "Pedidos", icon: ShoppingBag },
   { to: "/app/perfil", label: "Perfil", icon: User },

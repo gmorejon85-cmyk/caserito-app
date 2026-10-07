@@ -5,6 +5,7 @@ import { supabase } from "../../lib/supabaseClient";
 import { useAuth } from "../../context/AuthContext";
 import { C, CATEGORIAS } from "../../theme";
 import { Input, Select, PrimaryButton, FullScreenLoader } from "../../components/ui";
+import LocationPicker from "../../components/LocationPicker";
 
 const nav = [
   { to: "/comercio", label: "Dashboard", icon: BarChart3, end: true },
@@ -16,7 +17,7 @@ const nav = [
 
 function OnboardingNegocio({ onCreated }) {
   const { profile } = useAuth();
-  const [form, setForm] = useState({ nombre_comercio: "", tipo_establecimiento: CATEGORIAS[0], celular: "", direccion: "", ciudad: profile?.ciudad || "La Paz" });
+  const [form, setForm] = useState({ nombre_comercio: "", tipo_establecimiento: CATEGORIAS[0], celular: "", direccion: "", ciudad: profile?.ciudad || "La Paz", latitud: null, longitud: null });
   const [error, setError] = useState("");
   const [sending, setSending] = useState(false);
 
@@ -38,6 +39,7 @@ function OnboardingNegocio({ onCreated }) {
         <Select label="Tipo de comercio" options={CATEGORIAS} value={form.tipo_establecimiento} onChange={(e) => setForm({ ...form, tipo_establecimiento: e.target.value })} />
         <Input label="Celular" required value={form.celular} onChange={(e) => setForm({ ...form, celular: e.target.value })} />
         <Input label="Dirección" required value={form.direccion} onChange={(e) => setForm({ ...form, direccion: e.target.value })} />
+        <LocationPicker lat={form.latitud} lng={form.longitud} onChange={(lat, lng) => setForm({ ...form, latitud: lat, longitud: lng })} />
         <Input label="Ciudad" required value={form.ciudad} onChange={(e) => setForm({ ...form, ciudad: e.target.value })} />
         {error && <p className="font-body text-xs" style={{ color: C.pink }}>{error}</p>}
         <PrimaryButton type="submit" full disabled={sending}>{sending ? "Guardando…" : "Registrar mi comercio"}</PrimaryButton>
