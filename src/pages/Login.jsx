@@ -27,7 +27,14 @@ export default function Login() {
     setSending(true);
     const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
     setSending(false);
-    if (signInError) setError("Correo o contraseña incorrectos.");
+    if (signInError) {
+      const msg = signInError.message?.toLowerCase() || "";
+      if (msg.includes("confirm")) {
+        setError("Debes confirmar tu correo antes de ingresar. Revisa tu bandeja de entrada (y la carpeta de spam).");
+      } else {
+        setError("Correo o contraseña incorrectos.");
+      }
+    }
   };
 
   return (
