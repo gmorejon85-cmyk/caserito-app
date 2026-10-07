@@ -19,6 +19,7 @@ import ComercioLayout from "./pages/comercio/ComercioLayout";
 import ComercioDashboard from "./pages/comercio/Dashboard";
 import Publicaciones from "./pages/comercio/Publicaciones";
 import NuevaPublicacion from "./pages/comercio/NuevaPublicacion";
+import EditarPublicacion from "./pages/comercio/EditarPublicacion";
 import PedidosComercio from "./pages/comercio/PedidosComercio";
 import Estadisticas from "./pages/comercio/Estadisticas";
 import PerfilComercio from "./pages/comercio/PerfilComercio";
@@ -52,6 +53,7 @@ export default function App() {
         <Route index element={<ComercioDashboard />} />
         <Route path="publicaciones" element={<Publicaciones />} />
         <Route path="publicaciones/nueva" element={<NuevaPublicacion />} />
+        <Route path="publicaciones/:id/editar" element={<EditarPublicacion />} />
         <Route path="pedidos" element={<PedidosComercio />} />
         <Route path="estadisticas" element={<Estadisticas />} />
         <Route path="perfil" element={<PerfilComercio />} />

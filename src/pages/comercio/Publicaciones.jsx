@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Plus, Pause, Play, Trash2 } from "lucide-react";
+import { Plus, Pause, Play, Trash2, Pencil } from "lucide-react";
 import { supabase } from "../../lib/supabaseClient";
 import { useAuth } from "../../context/AuthContext";
 import { C } from "../../theme";
@@ -50,6 +50,9 @@ export default function Publicaciones() {
             </div>
             <span className="font-display text-sm" style={{ color: C.orangeDeep }}>Bs {p.precio_oferta}</span>
             <EstadoPill estado={p.estado} />
+            <Link to={`/comercio/publicaciones/${p.id}/editar`} className="p-2 rounded-lg" style={{ background: C.cream }}>
+              <Pencil size={14} style={{ color: C.ink }} />
+            </Link>
             <button onClick={() => togglePausa(p)} className="p-2 rounded-lg" style={{ background: C.cream }}>
               {p.estado === "activo" ? <Pause size={14} style={{ color: C.ink }} /> : <Play size={14} style={{ color: C.ink }} />}
             </button>
